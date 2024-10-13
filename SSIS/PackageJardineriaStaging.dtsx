@@ -1,0 +1,2823 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/29/2024 5:34:54 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-SH2LKF0"
+  DTS:CreatorName="DESKTOP-SH2LKF0\alucp"
+  DTS:DTSID="{60487147-4173-4CE9-A2A2-F5AAB08D8A58}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{9F580135-99E5-4254-A695-912FE67FB118}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B27818CA-F903-4BBF-8F43-0219E1B3413B}"
+      DTS:ObjectName="DESKTOP-SH2LKF0.jardineria">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-SH2LKF0;Initial Catalog=jardineria;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{B27818CA-F903-4BBF-8F43-0219E1B3413B}DESKTOP-SH2LKF0.jardineria;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9DD2637E-0830-4FF7-9442-8944E67DA601}"
+      DTS:ObjectName="DESKTOP-SH2LKF0.StaggingJardineria">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-SH2LKF0;Initial Catalog=StaggingJardineria;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package-{9DD2637E-0830-4FF7-9442-8944E67DA601}DESKTOP-SH2LKF0.StaggingJardineria;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{67D2708E-5B1B-4F8B-9DAD-55FF6D0062A4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\ClienteOrigen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ClienteOrigen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_cliente, nombre_cliente, nombre_contacto, apellido_contacto, telefono, ciudad, pais
+FROM            cliente</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ClienteOrigen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      name="ID_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre_cliente]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_cliente]"
+                      name="nombre_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre_contacto]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_contacto]"
+                      name="nombre_contacto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[apellido_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido_contacto]"
+                      length="30"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[apellido_contacto]"
+                      name="apellido_contacto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[telefono]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[telefono]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[telefono]"
+                      name="telefono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[ciudad]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[pais]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre_cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nombre_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="nombre_contacto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="apellido_contacto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[telefono]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].ExternalColumns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pais" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      name="ID_cliente" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[nombre_cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[nombre_cliente]"
+                      name="nombre_cliente" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[nombre_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[nombre_contacto]"
+                      name="nombre_contacto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[apellido_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[apellido_contacto]"
+                      name="apellido_contacto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[telefono]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[telefono]"
+                      name="telefono" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\EmpleadoDestino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="EmpleadoDestino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[EmpleadoST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\EmpleadoDestino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[ID_empleado]"
+                      cachedDataType="i4"
+                      cachedName="ID_empleado"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_empleado]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_empleado]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[ID_jefe]"
+                      cachedDataType="i4"
+                      cachedName="ID_jefe"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_jefe]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_jefe]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[ID_oficina]"
+                      cachedDataType="i4"
+                      cachedName="ID_oficina"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_oficina]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[nombre]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[apellido1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="apellido1"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[apellido1]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[apellido2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="apellido2"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[apellido2]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido2]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].Columns[puesto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="puesto"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[puesto]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[puesto]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_empleado]"
+                      dataType="i4"
+                      name="ID_empleado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_jefe]"
+                      dataType="i4"
+                      name="ID_jefe" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_oficina]"
+                      dataType="i4"
+                      name="ID_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[apellido1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="apellido1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[apellido2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="apellido2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input].ExternalColumns[puesto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="puesto" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\EmpleadoDestino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\EmpleadoOrigen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="EmpleadoOrigen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_empleado, ID_jefe, ID_oficina, nombre, apellido1, apellido2, puesto
+FROM            empleado</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\EmpleadoOrigen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_empleado]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_empleado]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_empleado]"
+                      name="ID_empleado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_jefe]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_jefe]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_jefe]"
+                      name="ID_jefe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_oficina]"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]"
+                      name="ID_oficina"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido1]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido1]"
+                      name="apellido1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido2]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[apellido2]"
+                      name="apellido2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[puesto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[puesto]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].Columns[puesto]"
+                      name="puesto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_empleado]"
+                      dataType="i4"
+                      name="ID_empleado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_jefe]"
+                      dataType="i4"
+                      name="ID_jefe" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_oficina]"
+                      dataType="i4"
+                      name="ID_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="apellido1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[apellido2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="apellido2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output].ExternalColumns[puesto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="puesto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_empleado]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_empleado]"
+                      name="ID_empleado" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_jefe]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_jefe]"
+                      name="ID_jefe" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_oficina]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_oficina]"
+                      name="ID_oficina" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[apellido1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[apellido1]"
+                      name="apellido1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[apellido2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[apellido2]"
+                      name="apellido2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[puesto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[puesto]"
+                      name="puesto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OficinaDestino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OficinaDestino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[OficinaST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OficinaDestino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].Columns[ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[ciudad]"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].Columns[pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="pais"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[pais]"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[pais]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].Columns[ID_oficina]"
+                      cachedDataType="i4"
+                      cachedName="ID_oficina"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_oficina]"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].Columns[Descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Descripcion"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[Descripcion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_oficina]"
+                      dataType="i4"
+                      name="ID_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Descripcion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OficinaDestino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OficinaDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OficinaDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OficinaOrigen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OficinaOrigen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_oficina, Descripcion, ciudad, pais
+FROM            oficina</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OficinaOrigen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[ciudad]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[pais]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[pais]"
+                      name="pais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_oficina]"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[ID_oficina]"
+                      name="ID_oficina"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].Columns[Descripcion]"
+                      name="Descripcion"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_oficina]"
+                      dataType="i4"
+                      name="ID_oficina" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output].ExternalColumns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Descripcion" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ID_oficina]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ID_oficina]"
+                      name="ID_oficina" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[Descripcion]"
+                      name="Descripcion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[pais]"
+                      name="pais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[ClienteST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_cliente]"
+                      cachedDataType="i4"
+                      cachedName="ID_cliente"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nombre_cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="nombre_cliente"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nombre_cliente]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_cliente]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[nombre_contacto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="nombre_contacto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nombre_contacto]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[nombre_contacto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[apellido_contacto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="apellido_contacto"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[apellido_contacto]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[apellido_contacto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[telefono]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="telefono"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[telefono]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[telefono]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ciudad"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ciudad]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[ciudad]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[pais]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="pais"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pais]"
+                      lineageId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output].Columns[pais]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nombre_cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="nombre_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[nombre_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="nombre_contacto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[apellido_contacto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="apellido_contacto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[telefono]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="telefono" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[pais]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="pais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PagoDestino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PagoDestino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PagoST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PagoDestino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].Columns[ID_pago]"
+                      cachedDataType="i4"
+                      cachedName="ID_pago"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_pago]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_pago]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].Columns[ID_cliente]"
+                      cachedDataType="i4"
+                      cachedName="ID_cliente"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_cliente]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].Columns[id_transaccion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="id_transaccion"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[id_transaccion]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[id_transaccion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].Columns[total]"
+                      cachedDataType="numeric"
+                      cachedName="total"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[total]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[total]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_pago]"
+                      dataType="i4"
+                      name="ID_pago" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[id_transaccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id_transaccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input].ExternalColumns[total]"
+                      dataType="numeric"
+                      name="total"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PagoDestino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PagoOrgien"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PagoOrgien"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_pago, ID_cliente, id_transaccion, total
+FROM            pago</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PagoOrgien.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_pago]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[ID_pago]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_pago]"
+                      name="ID_pago"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      name="ID_cliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[id_transaccion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[id_transaccion]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[id_transaccion]"
+                      name="id_transaccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[total]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[total]"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].Columns[total]"
+                      name="total"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[ID_pago]"
+                      dataType="i4"
+                      name="ID_pago" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[id_transaccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="id_transaccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output].ExternalColumns[total]"
+                      dataType="numeric"
+                      name="total"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ID_pago]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ID_pago]"
+                      name="ID_pago" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      name="ID_cliente" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[id_transaccion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[id_transaccion]"
+                      name="id_transaccion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[total]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[total]"
+                      name="total"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PedidoDestino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="PedidoDestino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PedidoST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PedidoDestino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].Columns[ID_pedido]"
+                      cachedDataType="i4"
+                      cachedName="ID_pedido"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_pedido]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_pedido]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].Columns[fecha_pedido]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="fecha_pedido"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[fecha_pedido]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_pedido]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].Columns[fecha_entrega]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="fecha_entrega"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[fecha_entrega]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_entrega]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].Columns[estado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="estado"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[estado]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[estado]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].Columns[ID_cliente]"
+                      cachedDataType="i4"
+                      cachedName="ID_cliente"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_pedido]"
+                      dataType="i4"
+                      name="ID_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[fecha_pedido]"
+                      dataType="wstr"
+                      length="10"
+                      name="fecha_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[fecha_entrega]"
+                      dataType="wstr"
+                      length="10"
+                      name="fecha_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="estado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PedidoDestino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\PedidoOrigen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="PedidoOrigen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_pedido, fecha_pedido, fecha_entrega, estado, ID_cliente
+FROM            pedido</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\PedidoOrigen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_pedido]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_pedido]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_pedido]"
+                      name="ID_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_pedido]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[fecha_pedido]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_pedido]"
+                      name="fecha_pedido"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_entrega]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[fecha_entrega]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[fecha_entrega]"
+                      name="fecha_entrega"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[estado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[estado]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[estado]"
+                      name="estado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].Columns[ID_cliente]"
+                      name="ID_cliente"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_pedido]"
+                      dataType="i4"
+                      name="ID_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[fecha_pedido]"
+                      dataType="wstr"
+                      length="10"
+                      name="fecha_pedido" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[fecha_entrega]"
+                      dataType="wstr"
+                      length="10"
+                      name="fecha_entrega" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="estado" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_cliente]"
+                      dataType="i4"
+                      name="ID_cliente" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_pedido]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_pedido]"
+                      name="ID_pedido" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[fecha_pedido]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[fecha_pedido]"
+                      name="fecha_pedido" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[fecha_entrega]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[fecha_entrega]"
+                      name="fecha_entrega" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[estado]"
+                      name="estado" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_cliente]"
+                      name="ID_cliente" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\ProdcutoDestino"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="ProdcutoDestino"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[ProductST]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ProdcutoDestino.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.StaggingJardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[ID_producto]"
+                      cachedDataType="i4"
+                      cachedName="ID_producto"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_producto]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[ID_producto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[CodigoProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="CodigoProducto"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[CodigoProducto]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[CodigoProducto]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[nombre]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[Categoria]"
+                      cachedDataType="i4"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[Categoria]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[cantidad_en_stock]"
+                      cachedDataType="i2"
+                      cachedName="cantidad_en_stock"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[cantidad_en_stock]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[cantidad_en_stock]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[precio_venta]"
+                      cachedDataType="numeric"
+                      cachedName="precio_venta"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[precio_venta]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_venta]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].Columns[precio_proveedor]"
+                      cachedDataType="numeric"
+                      cachedName="precio_proveedor"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[precio_proveedor]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_proveedor]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[ID_producto]"
+                      dataType="i4"
+                      name="ID_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[CodigoProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CodigoProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[Categoria]"
+                      dataType="i4"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[cantidad_en_stock]"
+                      dataType="i2"
+                      name="cantidad_en_stock" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[precio_venta]"
+                      dataType="numeric"
+                      name="precio_venta"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input].ExternalColumns[precio_proveedor]"
+                      dataType="numeric"
+                      name="precio_proveedor"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ProdcutoDestino.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProdcutoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProdcutoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProdcutoDestino.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\ProductoOrigen"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ProductoOrigen"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        ID_producto, CodigoProducto, nombre, Categoria, cantidad_en_stock, precio_venta, precio_proveedor
+FROM            producto</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\ProductoOrigen.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SH2LKF0.jardineria]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[ID_producto]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_producto]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[ID_producto]"
+                      name="ID_producto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[CodigoProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[CodigoProducto]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[CodigoProducto]"
+                      name="CodigoProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre]"
+                      length="70"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[Categoria]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[Categoria]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[cantidad_en_stock]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[cantidad_en_stock]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[cantidad_en_stock]"
+                      name="cantidad_en_stock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_venta]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[precio_venta]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_venta]"
+                      name="precio_venta"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_proveedor]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[precio_proveedor]"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].Columns[precio_proveedor]"
+                      name="precio_proveedor"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[ID_producto]"
+                      dataType="i4"
+                      name="ID_producto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[CodigoProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="CodigoProducto" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[Categoria]"
+                      dataType="i4"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[cantidad_en_stock]"
+                      dataType="i2"
+                      name="cantidad_en_stock" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[precio_venta]"
+                      dataType="numeric"
+                      name="precio_venta"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output].ExternalColumns[precio_proveedor]"
+                      dataType="numeric"
+                      name="precio_proveedor"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_producto]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ID_producto]"
+                      name="ID_producto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[CodigoProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[CodigoProducto]"
+                      name="CodigoProducto" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[Categoria]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[Categoria]"
+                      name="Categoria" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[cantidad_en_stock]"
+                      dataType="i2"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[cantidad_en_stock]"
+                      name="cantidad_en_stock" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[precio_venta]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[precio_venta]"
+                      name="precio_venta"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[precio_proveedor]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[precio_proveedor]"
+                      name="precio_proveedor"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\ProdcutoDestino.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\ProductoOrigen.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task\PedidoDestino.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\PedidoOrigen.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\ClienteOrigen.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output3]"
+              endId="Package\Data Flow Task\OficinaDestino.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\OficinaOrigen.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output4]"
+              endId="Package\Data Flow Task\PagoDestino.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\PagoOrgien.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output5]"
+              endId="Package\Data Flow Task\EmpleadoDestino.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\EmpleadoOrigen.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{2EEC76BA-64B4-4B41-876A-064AA7D867F8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{9DD2637E-0830-4FF7-9442-8944E67DA601}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table [ProductST]&#xA;truncate table [CategoríaDestino]&#xA;truncate table [ClienteST]&#xA;truncate table [OficinaST]&#xA;truncate table [PagoST]&#xA;truncate table [PedidoST]&#xA;truncate table [EmpleadoST]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{73988013-AAF0-43F2-90D0-63BDF273E008}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="158,151" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="152,40" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="237.75,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69"
+              Start="0,0"
+              End="0,61.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Data Flow Task\ProductoOrigen"
+          TopLeft="183,105" />
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Data Flow Task\ProdcutoDestino"
+          TopLeft="452,109" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="339,128">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113,0"
+              Start="0,0"
+              End="105.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="105.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Data Flow Task\PedidoOrigen"
+          TopLeft="180,189" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\PedidoDestino"
+          TopLeft="463,190" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output1]"
+          TopLeft="326,210.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="137,0"
+              Start="0,0"
+              End="129.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="129.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Data Flow Task\ClienteOrigen"
+          TopLeft="181,253" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="456,257" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output2]"
+          TopLeft="327,276">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129,0"
+              Start="0,0"
+              End="121.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="121.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Data Flow Task\OficinaOrigen"
+          TopLeft="180,359" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task\OficinaDestino"
+          TopLeft="475,361" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output3]"
+          TopLeft="326,381">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="149,0"
+              Start="0,0"
+              End="141.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="141.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="138,42"
+          Id="Package\Data Flow Task\PagoOrgien"
+          TopLeft="180,463" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Data Flow Task\PagoDestino"
+          TopLeft="501,473" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output4]"
+          TopLeft="318,484">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="183,10"
+              Start="0,0"
+              End="175.5,10">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="87.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.5,0"
+                    Point2="91.5,0"
+                    Point3="91.5,4" />
+                  <mssgle:LineSegment
+                    End="91.5,6" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.5,6"
+                    Point2="91.5,10"
+                    Point3="95.5,10" />
+                  <mssgle:LineSegment
+                    End="175.5,10" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Data Flow Task\EmpleadoOrigen"
+          TopLeft="180,575" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Data Flow Task\EmpleadoDestino"
+          TopLeft="501,578" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output5]"
+          TopLeft="342,597.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="159,0"
+              Start="0,0"
+              End="151.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="151.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="XD"
+          ParentId="Package\Data Flow Task"
+          FontInfo="{assembly:Null}"
+          Size="44,60"
+          Id="fdeb3161-dd0c-4f35-bd12-c6bf9f4ef3db"
+          TopLeft="1846,209" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ProductoOrigen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ProdcutoDestino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\PedidoOrigen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\PedidoDestino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\ClienteOrigen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OficinaOrigen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OficinaDestino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\PagoOrgien">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\PagoDestino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\EmpleadoOrigen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\EmpleadoDestino">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
